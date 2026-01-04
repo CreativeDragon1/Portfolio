@@ -1,0 +1,421 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio.exe - Retro Terminal</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-container">
+            <div class="pixel-logo">PORTFOLIO.EXE</div>
+            <div class="loading-text">LOADING...</div>
+            <div class="loading-bar-container">
+                <div class="loading-bar" id="loadingBar"></div>
+            </div>
+            <div class="loading-percentage" id="loadingPercentage">0%</div>
+        </div>
+    </div>
+
+    <!-- Cursor Trail -->
+    <canvas id="cursorCanvas"></canvas>
+
+    <!-- Falling Leaves -->
+    <div id="leavesContainer"></div>
+
+    <!-- Main Content -->
+    <div class="main-container" id="mainContent">
+        <!-- Header -->
+        <header class="retro-header">
+            <div class="header-content">
+                <div class="pixel-logo-small">
+                    <span class="blinking">▶</span> PORTFOLIO.EXE
+                </div>
+                <div class="header-stats">
+                    <span class="stat-item">CREATIVE MODE: <span class="stat-value blinking-slow">ON</span></span>
+                    <span class="stat-divider">|</span>
+                    <span class="stat-item">SYS_TIME: <span class="stat-value" id="currentTime">00:00:00</span></span>
+                    <span class="stat-divider">|</span>
+                    <div class="theme-switcher">
+                        <button class="theme-toggle-btn" id="themeToggleBtn">
+                            <span class="pixel-emoji theme-icon">🎨</span>
+                            <span>THEME</span>
+                        </button>
+                        <div class="theme-picker" id="themePicker">
+                            <div class="theme-picker-title">CHOOSE COLOR</div>
+                            <div class="theme-options">
+                                <div class="theme-option active" data-theme="yellow">YELLOW</div>
+                                <div class="theme-option" data-theme="pink">PINK</div>
+                                <div class="theme-option" data-theme="blue">BLUE</div>
+                                <div class="theme-option" data-theme="green">GREEN</div>
+                                <div class="theme-option" data-theme="purple">PURPLE</div>
+                                <div class="theme-option" data-theme="orange">ORANGE</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- About & Profile Section -->
+        <div class="window" id="aboutWindow">
+            <div class="window-titlebar">
+                <span class="window-title"><span class="pixel-emoji">📋</span> ABOUT_ME.TXT</span>
+                <div class="window-controls">
+                    <button class="window-btn">─</button>
+                    <button class="window-btn">□</button>
+                    <button class="window-btn">✕</button>
+                </div>
+            </div>
+            <div class="window-content about-profile-content">
+                <div class="about-profile-grid">
+                    <!-- Left: Text Content -->
+                    <div class="about-text-section">
+                        <div class="profile-section">
+                            <h2 class="section-title">
+                                <span class="title-icon">▸</span> WHO_AM_I
+                            </h2>
+                            <p class="bio-text">
+                                Hey there! I'm a creative technologist passionate about blending retro aesthetics with modern innovation. I build projects that merge art, code, and engineering.
+                            </p>
+                            
+                            <h3 class="subsection-title">
+                                <span class="pixel-bullet">►</span> INTERESTS.DAT
+                            </h3>
+                            <ul class="interests-list">
+                                <li><span class="list-marker">▸</span> Technology & Innovation</li>
+                                <li><span class="list-marker">▸</span> Creative Coding & Design</li>
+                                <li><span class="list-marker">▸</span> Robotics & Automation</li>
+                                <li><span class="list-marker">▸</span> AI & Machine Learning</li>
+                                <li><span class="list-marker">▸</span> Motorsport Aerodynamics</li>
+                            </ul>
+
+                            <div class="stats-panel">
+                                <div class="stat-row">
+                                    <span class="stat-label">SKILL_LEVEL:</span>
+                                    <div class="stat-bar">
+                                        <div class="stat-fill" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">CREATIVITY:</span>
+                                    <div class="stat-bar">
+                                        <div class="stat-fill" style="width: 92%"></div>
+                                    </div>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">PASSION:</span>
+                                    <div class="stat-bar">
+                                        <div class="stat-fill" style="width: 98%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Profile Photo -->
+                    <div class="about-photo-section">
+                        <div class="crt-frame">
+                            <div class="crt-screen">
+                                <div class="scanlines"></div>
+                                <img src="my_image.jpg" alt="Profile Photo" class="profile-photo">
+                                <div class="screen-glare"></div>
+                            </div>
+                            <div class="crt-base">
+                                <div class="power-indicator"></div>
+                                <div class="crt-label">STATUS: ONLINE</div>
+                            </div>
+                        </div>
+                        <div class="photo-decorations">
+                            <span class="pixel-star star-1"><span class="pixel-emoji">✨</span></span>
+                            <span class="pixel-star star-2"><span class="pixel-emoji">✨</span></span>
+                            <span class="pixel-star star-3"><span class="pixel-emoji">✨</span></span>
+                            <span class="pixel-star star-4"><span class="pixel-emoji">✨</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Awards Section -->
+        <div class="window" id="awardsWindow">
+            <div class="window-titlebar">
+                <span class=\"window-title\"><span class=\"pixel-emoji\">🏆</span> ACHIEVEMENTS.EXE</span>
+                <div class="window-controls">
+                    <button class="window-btn">─</button>
+                    <button class="window-btn">□</button>
+                    <button class="window-btn">✕</button>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="awards-grid">
+                    <div class="award-slot">
+                        <div class=\"award-icon\"><span class=\"pixel-emoji\">🏆</span></div>
+                        <div class="award-info">
+                            <div class="award-title">Innovation Award</div>
+                            <div class="award-desc">First place in Tech Innovation Challenge</div>
+                        </div>
+                    </div>
+                    <div class="award-slot">
+                        <div class=\"award-icon\"><span class=\"pixel-emoji\">🥇</span></div>
+                        <div class="award-info">
+                            <div class="award-title">Best Project</div>
+                            <div class="award-desc">Outstanding creative technology project</div>
+                        </div>
+                    </div>
+                    <div class="award-slot">
+                        <div class=\"award-icon\"><span class=\"pixel-emoji\">⭐</span></div>
+                        <div class="award-info">
+                            <div class="award-title">Design Excellence</div>
+                            <div class="award-desc">Recognized for UI/UX innovation</div>
+                        </div>
+                    </div>
+                    <div class="award-slot">
+                        <div class=\"award-icon\"><span class=\"pixel-emoji\">🎖️</span></div>
+                        <div class="award-info">
+                            <div class="award-title">Hackathon Winner</div>
+                            <div class="award-desc">24-hour coding challenge champion</div>
+                        </div>
+                    </div>
+                    <div class="award-slot">
+                        <div class=\"award-icon\"><span class=\"pixel-emoji\">🌟</span></div>
+                        <div class="award-info">
+                            <div class="award-title">Community Leader</div>
+                            <div class="award-desc">Outstanding contribution to tech community</div>
+                        </div>
+                    </div>
+                    <div class="award-slot">
+                        <div class=\"award-icon\"><span class=\"pixel-emoji\">💎</span></div>
+                        <div class="award-info">
+                            <div class="award-title">Rising Star</div>
+                            <div class="award-desc">Emerging talent in creative technology</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="window" id="projectsWindow">
+            <div class="window-titlebar">
+                <span class=\"window-title\"><span class=\"pixel-emoji\">📁</span> /PROJECTS</span>
+                <div class="window-controls">
+                    <button class="window-btn">─</button>
+                    <button class="window-btn">□</button>
+                    <button class="window-btn">✕</button>
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="terminal-prompt">
+                    <span class="prompt-symbol">C:\PORTFOLIO\PROJECTS></span>
+                    <span class="blinking-cursor">_</span>
+                </div>
+                
+                <div class="projects-list">
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-icon"><span class="pixel-emoji">📂</span></span>
+                            <span class="project-title">BrainGuard</span>
+                            <div class="project-links">
+                                <a href="https://github.com/CreativeDragon1/BrainGuard" target="_blank" class="project-btn">
+                                    <span class="pixel-emoji">💻</span> CODE
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <p class="project-desc">AI-powered brain health monitoring system using machine learning to analyze patterns and provide insights.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Jupyter</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">ML</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-icon"><span class="pixel-emoji">📂</span></span>
+                            <span class="project-title">SmartCare</span>
+                            <div class="project-links">
+                                <a href="https://creativedragon1.github.io/SmartCare-/" target="_blank" class="project-btn try-btn">
+                                    <span class="pixel-emoji">🎮</span> TRY ME
+                                </a>
+                                <a href="https://github.com/CreativeDragon1/SmartCare-" target="_blank" class="project-btn">
+                                    <span class="pixel-emoji">💻</span> CODE
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <p class="project-desc">Healthcare web app for identifying diseases based on symptoms and booking appointments or ordering medications.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">Healthcare</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-icon"><span class="pixel-emoji">📂</span></span>
+                            <span class="project-title">giischess</span>
+                            <div class="project-links">
+                                <a href="https://giischess.vercel.app" target="_blank" class="project-btn try-btn">
+                                    <span class="pixel-emoji">🎮</span> TRY ME
+                                </a>
+                                <a href="https://github.com/CreativeDragon1/giischess" target="_blank" class="project-btn">
+                                    <span class="pixel-emoji">💻</span> CODE
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <p class="project-desc">Interactive chess game platform deployed on Vercel with real-time gameplay and strategic AI opponent.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Chess</span>
+                                <span class="tech-tag">Vercel</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-icon"><span class="pixel-emoji">📂</span></span>
+                            <span class="project-title">Drama Night</span>
+                            <div class="project-links">
+                                <a href="https://creativedragon1.github.io/Drama-Night/" target="_blank" class="project-btn try-btn">
+                                    <span class="pixel-emoji">🎮</span> TRY ME
+                                </a>
+                                <a href="https://github.com/CreativeDragon1/Drama-Night" target="_blank" class="project-btn">
+                                    <span class="pixel-emoji">💻</span> CODE
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <p class="project-desc">Interactive drama event website with dynamic content and engaging user experience design.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-icon"><span class="pixel-emoji">📂</span></span>
+                            <span class="project-title">Horror Extension</span>
+                            <div class="project-links">
+                                <a href="https://github.com/CreativeDragon1/Horror-Ext" target="_blank" class="project-btn">
+                                    <span class="pixel-emoji">💻</span> CODE
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <p class="project-desc">Browser extension that transforms websites with scary visual effects and atmospheric modifications.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Chrome API</span>
+                                <span class="tech-tag">Extensions</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-icon"><span class="pixel-emoji">📂</span></span>
+                            <span class="project-title">CSL to English Translator</span>
+                            <div class="project-links">
+                                <a href="https://creativedragon1.github.io/CSL_to_English/" target="_blank" class="project-btn try-btn">
+                                    <span class="pixel-emoji">🎮</span> TRY ME
+                                </a>
+                                <a href="https://github.com/CreativeDragon1/CSL_to_English" target="_blank" class="project-btn">
+                                    <span class="pixel-emoji">💻</span> CODE
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <p class="project-desc">Sign language translation tool converting Chinese Sign Language gestures to English text using AI.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">ML</span>
+                                <span class="tech-tag">Accessibility</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <span class="project-icon"><span class="pixel-emoji">📂</span></span>
+                            <span class="project-title">Retro Game</span>
+                            <div class="project-links">
+                                <a href="https://creativedragon1.github.io/Game/" target="_blank" class="project-btn try-btn">
+                                    <span class="pixel-emoji">🎮</span> TRY ME
+                                </a>
+                                <a href="https://github.com/CreativeDragon1/Game" target="_blank" class="project-btn">
+                                    <span class="pixel-emoji">💻</span> CODE
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-body">
+                            <p class="project-desc">Classic browser-based game with pixel art graphics and nostalgic gameplay mechanics.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Game Dev</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer / Taskbar -->
+        <footer class="retro-footer">
+            <div class="footer-left">
+                <span class="footer-item">
+                    <span class="footer-icon">►</span> CREATIVE_MODE
+                </span>
+                <span class="footer-divider">|</span>
+                <span class="footer-item">
+                    VISITORS: <span class="hit-counter" id="hitCounter">000042</span>
+                </span>
+                <span class="footer-divider">|</span>
+                <span class="footer-item">
+                    <span class=\"pixel-emoji\">🔋</span> <span class=\"battery-level\">98%</span>
+                </span>
+            </div>
+            <div class="footer-right">
+                <span class="terminal-cursor blinking">█</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Music Player Button -->
+    <div class="music-player" id="musicPlayer">
+        <button class="music-toggle" id="musicToggle">
+            <div class="cassette-icon">
+                <div class="cassette-top"></div>
+                <div class="cassette-body">
+                    <div class="cassette-reel cassette-reel-left" id="reelLeft"></div>
+                    <div class="cassette-reel cassette-reel-right" id="reelRight"></div>
+                    <div class=\"cassette-label\"><span class=\"pixel-emoji\">🎵</span></div>
+                </div>
+            </div>
+            <div class="equalizer" id="equalizer">
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+                <span class="eq-bar"></span>
+            </div>
+        </button>
+        <audio id="bgMusic" loop>
+            <source src="dl.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
