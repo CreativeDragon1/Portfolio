@@ -3,6 +3,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    outline: none;
+}
+
+*:focus {
+    outline: none !important;
 }
 
 :root {
@@ -273,6 +278,7 @@ body {
     transition: all 0.2s;
     position: relative;
     z-index: 10002;
+    outline: none !important;
 }
 
 .theme-toggle-btn:hover {
@@ -592,6 +598,7 @@ body {
     justify-content: center;
     box-shadow: 2px 2px 0 var(--color-border);
     transition: all 0.1s;
+    outline: none !important;
 }
 
 .window-btn:hover {
@@ -1167,6 +1174,7 @@ body {
     align-items: center;
     gap: 4px;
     cursor: pointer;
+    outline: none !important;
 }
 
 .project-btn:hover {
