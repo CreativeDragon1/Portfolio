@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN.EXE - Control Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="admin-login-screen">
+        <div class="admin-login-container">
+            <div class="admin-logo">
+                <span class="blinking">▶</span> ADMIN.EXE
+            </div>
+            <div class="admin-login-box">
+                <div class="login-title">SYSTEM ACCESS</div>
+                <div class="terminal-prompt">
+                    <span class="prompt-symbol">PASSWORD></span>
+                    <input type="password" id="adminPassword" class="admin-input" placeholder="Enter password...">
+                </div>
+                <div class="login-error" id="loginError"></div>
+                <button class="admin-btn admin-btn-primary" id="loginBtn">
+                    <span class="pixel-emoji">🔑</span> ACCESS SYSTEM
+                </button>
+                <div class="login-hint">Hint: Default password is "Raahi%123"</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="admin-dashboard hidden">
+        <!-- Header -->
+        <header class="retro-header">
+            <div class="header-content">
+                <div class="pixel-logo-small">
+                    <span class="blinking">▶</span> ADMIN CONTROL PANEL
+                </div>
+                <div class="header-stats">
+                    <span class="stat-item">MODE: <span class="stat-value blinking-slow">ADMIN</span></span>
+                    <span class="stat-divider">|</span>
+                    <span class="stat-item">SYS_TIME: <span class="stat-value" id="adminTime">00:00:00</span></span>
+                    <span class="stat-divider">|</span>
+                    <button class="admin-logout-btn" id="logoutBtn">
+                        <span class="pixel-emoji">🚪</span> LOGOUT
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="admin-main-container">
+            <!-- Navigation -->
+            <div class="admin-sidebar">
+                <div class="sidebar-title">SYSTEM MENU</div>
+                <button class="sidebar-btn active" data-section="awards">
+                    <span class="pixel-emoji">🏆</span> ACHIEVEMENTS
+                </button>
+                <button class="sidebar-btn" onclick="window.location.href='index.html'">
+                    <span class="pixel-emoji">🏠</span> VIEW SITE
+                </button>
+            </div>
+
+            <!-- Awards Management Section -->
+            <div class="admin-content">
+                <div class="admin-section" id="awardsSection">
+                    <!-- Add New Award Form -->
+                    <div class="window admin-window">
+                        <div class="window-titlebar">
+                            <span class="window-title"><span class="pixel-emoji">➕</span> ADD_NEW_AWARD.EXE</span>
+                        </div>
+                        <div class="window-content">
+                            <form id="addAwardForm" class="admin-form">
+                                <div class="form-group">
+                                    <label class="form-label">ICON:</label>
+                                    <select id="awardIcon" class="admin-input" required>
+                                        <option value="★★★">★★★ Triple Star</option>
+                                        <option value="[1ST]">[1ST] First Place</option>
+                                        <option value="[2ND]">[2ND] Second Place</option>
+                                        <option value="[3RD]">[3RD] Third Place</option>
+                                        <option value="▲▲▲">▲▲▲ Triple Triangle</option>
+                                        <option value="◆◆◆">◆◆◆ Triple Diamond</option>
+                                        <option value="►►►">►►► Triple Arrow</option>
+                                        <option value="■■■">■■■ Triple Square</option>
+                                        <option value="[WIN]">[WIN] Winner</option>
+                                        <option value="[TOP]">[TOP] Top Place</option>
+                                        <option value="★☆☆">★☆☆ One Star</option>
+                                        <option value="★★☆">★★☆ Two Star</option>
+                                        <option value="[***]">[***] Special</option>
+                                        <option value="▼▼▼">▼▼▼ Triple Down</option>
+                                        <option value="◄◄◄">◄◄◄ Triple Left</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">TITLE:</label>
+                                    <input type="text" id="awardTitle" class="admin-input" placeholder="Award name..." required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">DESCRIPTION:</label>
+                                    <input type="text" id="awardDesc" class="admin-input" placeholder="Award description..." required>
+                                </div>
+                                <input type="hidden" id="editAwardId" value="">
+                                <div class="form-actions">
+                                    <button type="submit" class="admin-btn admin-btn-primary">
+                                        <span class="pixel-emoji">💾</span> SAVE AWARD
+                                    </button>
+                                    <button type="button" class="admin-btn admin-btn-secondary" id="cancelEditBtn" style="display: none;">
+                                        <span class="pixel-emoji">✕</span> CANCEL
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Awards List -->
+                    <div class="window admin-window" style="margin-top: 20px;">
+                        <div class="window-titlebar">
+                            <span class="window-title"><span class="pixel-emoji">📋</span> CURRENT_AWARDS.DAT</span>
+                            <div class="awards-count">
+                                TOTAL: <span id="awardsCount">0</span>
+                            </div>
+                        </div>
+                        <div class="window-content">
+                            <div id="awardsList" class="admin-awards-list">
+                                <!-- Awards will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

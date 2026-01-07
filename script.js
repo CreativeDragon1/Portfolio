@@ -41,6 +41,7 @@ function initializeAnimations() {
     initMusicPlayer();
     animateStatBars();
     initThemeSwitcher();
+    loadDynamicAwards();
 }
 
 // ===== CLOCK =====
@@ -432,6 +433,27 @@ function throttle(func, limit) {
 window.addEventListener('scroll', throttle(() => {
     // Scroll-based animations handled here
 }, 100));
+
+// ===== DYNAMIC AWARDS LOADING =====
+function loadDynamicAwards() {
+    const savedAwards = localStorage.getItem('portfolioAwards');
+    if (!savedAwards) return; // Use static HTML if no dynamic awards
+    
+    const awards = JSON.parse(savedAwards);
+    const awardsGrid = document.querySelector('.awards-grid');
+    
+    if (awardsGrid && awards.length > 0) {
+        awardsGrid.innerHTML = awards.map(award => `
+            <div class="award-slot">
+                <div class="award-icon award-icon-text">${award.icon}</div>
+                <div class="award-info">
+                    <div class="award-title">${award.title}</div>
+                    <div class="award-desc">${award.desc}</div>
+                </div>
+            </div>
+        `).join('');
+    }
+}
 
 // ===== CONSOLE EASTER EGG =====
 console.log('%c🎮 PORTFOLIO.EXE 🎮', 'font-size: 20px; color: #9dff9d; font-weight: bold;');
