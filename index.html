@@ -78,8 +78,25 @@
                                 <span class="title-icon">▸</span> WHO_AM_I
                             </h2>
                             <p class="bio-text">
-                                Hiii, I’m Raahi. I’m a creative and ambitious tech enthusiast, passionate about coding, AI, robotics, and web development. I love building innovative projects, from neural networks to interactive websites. Artistic and detail-oriented, I combine technical skills with creativity, constantly exploring, learning, and pushing boundaries to make ideas come alive.
+                                    Hiii, I'm Raahi. I am a 
+                                    <select id="roleSelector" class="role-selector">
+                                        <option value="fullstack">Full-Stack Creator</option>
+                                        <option value="video-editing">Video Editing Professional</option>
+                                        <option value="cadding">CAD Designer</option>
+                                        <option value="pcb-design">PCB Designer</option>
+                                        <option value="web-dev">Web Developer</option>
+                                        <option value="game-dev">Game Developer</option>
+                                        <option value="leader">Leader & Organizer</option>
+                                        <option value="entrepreneur">Entrepreneur</option>
+                                        <option value="robotics">Robotics Enthusiast</option>
+                                        <option value="cfd">CFD Analyst</option>
+                                    </select>
                             </p>
+
+                                <!-- Curated Content Section -->
+                                <div id="curatedContent" class="curated-content">
+                                    <!-- Content dynamically inserted based on role -->
+                                </div>
                             
                             <h3 class="subsection-title">
                                 <span class="pixel-bullet">►</span> INTERESTS.DAT
@@ -152,69 +169,7 @@
             </div>
             <div class="window-content">
                 <div class="awards-grid">
-                    <div class="award-slot">
-                        <div class="award-icon award-icon-text">★★★</div>
-                        <div class="award-info">
-                            <div class="award-title">GIIS 2K25</div>
-                            <div class="award-desc">Overall Winner</div>
-                        </div>
-                    </div>
-                    <div class="award-slot">
-                        <div class="award-icon award-icon-text">[1ST]</div>
-                        <div class="award-info">
-                            <div class="award-title">InnovateHacks 2.0</div>
-                            <div class="award-desc">Top placement for innovative build</div>
-                        </div>
-                    </div>
-                    <div class="award-slot">
-                        <div class="award-icon award-icon-text">▲▲▲</div>
-                        <div class="award-info">
-                            <div class="award-title">Learn 2 Build 2024</div>
-                            <div class="award-desc">Winner – XYZ Domain & Interview Cake License</div>
-                        </div>
-                    </div>
-                    <div class="award-slot">
-                        <div class="award-icon award-icon-text">[2ND]</div>
-                        <div class="award-info">
-                            <div class="award-title">CyberHacks</div>
-                            <div class="award-desc">Second Place (Winner Track)</div>
-                        </div>
-                    </div>
-                    <div class="award-slot">
-                        <div class="award-icon award-icon-text">◆◆◆</div>
-                        <div class="award-info">
-                            <div class="award-title">GIA Hacks 2</div>
-                            <div class="award-desc">Winner track recognition</div>
-                        </div>
-                    </div>
-                    <div class="award-slot">
-                        <div class="award-icon award-icon-text">►►►</div>
-                        <div class="award-info">
-                            <div class="award-title">CSPSC Hacks</div>
-                            <div class="award-desc">Winner – Honorable Mention</div>
-                        </div>
-                    </div>
-                    <div class="award-slot">
-                        <div class="award-icon award-icon-text">[3RD]</div>
-                        <div class="award-info">
-                            <div class="award-title">Lift Off</div>
-                            <div class="award-desc">2nd Runner Up</div>
-                        </div>
-                    </div>
-                    <div class="award-slot">
-                        <div class="award-icon award-icon-text">★★★</div>
-                        <div class="award-info">
-                            <div class="award-title">Valentine Hacks by EduLearn</div>
-                            <div class="award-desc">Winner – First Place</div>
-                        </div>
-                    </div>
-                    <div class="award-slot">
-                        <div class="award-icon award-icon-text">■■■</div>
-                        <div class="award-info">
-                            <div class="award-title">EduCathor</div>
-                            <div class="award-desc">Winner – 1st</div>
-                        </div>
-                    </div>
+                    <!-- Awards loaded dynamically from localStorage -->
                 </div>
             </div>
         </div>

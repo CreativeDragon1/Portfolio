@@ -436,10 +436,46 @@ window.addEventListener('scroll', throttle(() => {
 
 // ===== DYNAMIC AWARDS LOADING =====
 function loadDynamicAwards() {
+    let awards = [];
     const savedAwards = localStorage.getItem('portfolioAwards');
-    if (!savedAwards) return; // Use static HTML if no dynamic awards
     
-    const awards = JSON.parse(savedAwards);
+    if (savedAwards) {
+        awards = JSON.parse(savedAwards);
+    } else {
+        // Initialize with default awards if none exist
+        awards = [
+            // Clubs & Organizations
+            { id: 1, icon: "►", title: "Technology Head", desc: "Robotics Club - Leadership position" },
+            { id: 2, icon: "►", title: "Secretary", desc: "GIIS Chess Club - Leadership position" },
+            { id: 3, icon: "►", title: "Head of Design and Marketing", desc: "GIIS Pulse Club - Leadership position" },
+            { id: 4, icon: "◆", title: "Design and Marketing", desc: "GIIS Sports Club" },
+            { id: 5, icon: "◆", title: "Technology Department", desc: "GIIS Tech Club" },
+            { id: 6, icon: "►", title: "Technology Head", desc: "Blueprint - Hackathon with 79 participants" },
+            { id: 7, icon: "►", title: "Technology Head", desc: "Robotics Stall - Mechanum wheel car project" },
+            { id: 8, icon: "►", title: "Head of Sound and Lighting & MARCOM", desc: "Drama Night - Leadership position" },
+            { id: 9, icon: "◆", title: "Event Photographer", desc: "Photography Club" },
+            // Hackathons Organized
+            { id: 10, icon: "[★]", title: "Organiser - Educathon Hackathon", desc: "$31,000 in prizes, 450+ global participants" },
+            { id: 11, icon: "[★]", title: "Organiser - Sandcodes", desc: "$3,500 in funds, 340+ participants" },
+            // Internships & Jobs
+            { id: 12, icon: "▲", title: "Chief Technical Officer", desc: "The QU4DCOACH - Startup, Jatayu V1.0 flight controller" },
+            // Certificates & Awards
+            { id: 13, icon: "★★★", title: "Winner", desc: "GIIS 2K25 Hackathon - Advanced" },
+            { id: 14, icon: "[1ST]", title: "First Place", desc: "Campfire Singapore - HackClub 48hr game jam" },
+            { id: 15, icon: "[3RD]", title: "3rd Place", desc: "Lift Off" },
+            { id: 16, icon: "[WIN]", title: "Swimmer OSINT CTF", desc: "Cybersecurity competition - Score: 216/688" },
+            { id: 17, icon: "[★]", title: "Winner", desc: "Participated in 78 online hackathons, won 10" },
+            // Academics
+            { id: 18, icon: "▼", title: "Participation", desc: "CSMC Canadian Math Exam" },
+            { id: 19, icon: "▼", title: "Aerospace Engineering Course", desc: "IIT Madras online course" },
+            // Volunteering
+            { id: 20, icon: "◄", title: "Volunteer", desc: "Medcon" },
+            { id: 21, icon: "◄", title: "Photographer", desc: "Conference" },
+            { id: 22, icon: "◄", title: "Photographer", desc: "TOK Fest" },
+            { id: 23, icon: "◄", title: "Cleaner", desc: "Beach Clean Up @ Pasir Ris" }
+        ];
+    }
+    
     const awardsGrid = document.querySelector('.awards-grid');
     
     if (awardsGrid && awards.length > 0) {
@@ -453,6 +489,273 @@ function loadDynamicAwards() {
             </div>
         `).join('');
     }
+}
+
+// ===== ROLE SELECTOR & CURATED CONTENT =====
+const roleContent = {
+    'fullstack': {
+        title: 'Full-Stack Creator',
+        description: 'Creative and ambitious tech enthusiast passionate about building end-to-end solutions. From UI/UX design to backend architecture, from robotics hardware to AI algorithms.',
+        content: `
+            <div class="stats-block">
+                <strong>▸ SKILL AREAS:</strong><br>
+                • Web Development (JavaScript, TypeScript, HTML/CSS, Next.js)<br>
+                • Game Development (Sprig, Web Games)<br>
+                • CAD Design (72+ hours in Construct)<br>
+                • Robotics & Embedded Systems<br>
+                • AI & Machine Learning<br>
+                • Video Production & Marketing<br>
+                • Entrepreneurship & Leadership<br>
+                • Hardware Design (PCB, Electronics)<br>
+            </div>
+            <p class="role-description">Currently exploring CFD analysis for STEM Racing. Always building, learning, and pushing creative boundaries.</p>
+        `
+    },
+    'video-editing': {
+        title: 'Video Editing Professional',
+        description: 'Experienced in creating engaging marketing content, event documentation, and promotional videos.',
+        projects: [
+            {
+                name: 'GIIS Drama Night 2025',
+                desc: 'Marketing & promotional videos for drama night event',
+                links: [
+                    { text: 'View Instagram', url: 'https://www.instagram.com/giisdramanight2025/', type: 'external' }
+                ]
+            }
+        ],
+        footer: 'Specialized in creating compelling video content for events, brands, and social media.'
+    },
+    'cadding': {
+        title: 'CAD Designer',
+        description: 'Proficient in 3D modeling and mechanical design.',
+        content: `
+            <div class="stats-block">
+                <strong>▸ EXPERIENCE:</strong><br>
+                • <strong>72+ hours</strong> of CAD design work<br>
+                • Focus: Construct (HackClub)<br>
+                • Experience with mechanical and structural designs<br>
+                • 3D modeling for robotics projects<br>
+            </div>
+            <p class="role-description">All 3D models and designs available on my Printables page.</p>
+        `,
+        projects: [
+            {
+                name: '3D Models & Designs',
+                desc: 'Complete collection of CAD projects and 3D printable models',
+                links: [
+                    { text: 'View Printables Profile', url: 'https://www.printables.com/@RaahiChheda_3569909/models', type: 'external' }
+                ]
+            }
+        ]
+    },
+    'pcb-design': {
+        title: 'PCB Designer',
+        description: 'Exploring hardware design and PCB development.',
+        content: `
+            <div class="stats-block">
+                <strong>▸ STATUS: WORK IN PROGRESS</strong><br>
+                Currently developing PCB design skills through various projects.<br>
+                Experience with circuit design and hardware integration.
+            </div>
+            <p class="role-description">More projects coming soon as part of ongoing hardware development work.</p>
+        `
+    },
+    'web-dev': {
+        title: 'Web Developer',
+        description: 'Full-stack web development with focus on interactive, user-friendly applications.',
+        projects: [
+            {
+                name: 'SmartCare',
+                desc: 'Integrated AI Healthcare Ecosystem - Complete client-side healthcare platform with Firebase auth, doctor consultations, virtual meetings, symptom checker, pharmacy ordering, and wellness community.',
+                links: [
+                    { text: '🎮 TRY DEMO', url: 'https://creativedragon1.github.io/SmartCare-/', type: 'demo' },
+                    { text: '💻 VIEW CODE', url: 'https://github.com/CreativeDragon1/SmartCare-', type: 'github' }
+                ]
+            },
+            {
+                name: 'Portfolio (This Site)',
+                desc: 'Personal portfolio with admin panel, awards management, and interactive features. Retro terminal theme.',
+                links: [
+                    { text: '🎮 VIEW LIVE', url: 'https://creativedragon1.github.io/Portfolio/', type: 'demo' },
+                    { text: '💻 VIEW CODE', url: 'https://github.com/CreativeDragon1/Portfolio', type: 'github' }
+                ]
+            },
+            {
+                name: 'Horror-Ext',
+                desc: 'Creative browser extension that transforms websites into spooky experiences',
+                links: [
+                    { text: '💻 VIEW CODE', url: 'https://github.com/CreativeDragon1/Horror-Ext', type: 'github' }
+                ]
+            },
+            {
+                name: 'Safeclick',
+                desc: 'Full-stack Next.js application - TypeScript powered modern web app',
+                links: [
+                    { text: '💻 VIEW CODE', url: 'https://github.com/CreativeDragon1/Safeclick', type: 'github' }
+                ]
+            },
+            {
+                name: 'CSL to English Translator',
+                desc: 'Interactive web app for translating Chinese Sign Language to English',
+                links: [
+                    { text: '💻 VIEW CODE', url: 'https://github.com/CreativeDragon1/CSL_to_English', type: 'github' }
+                ]
+            },
+            {
+                name: 'Photography Club Website',
+                desc: 'Club portfolio and member showcase platform',
+                links: [
+                    { text: '💻 VIEW CODE', url: 'https://github.com/CreativeDragon1/photography-club', type: 'github' }
+                ]
+            }
+        ]
+    },
+    'game-dev': {
+        title: 'Game Developer',
+        description: 'Creating interactive gaming experiences from retro-style arcade games to educational game platforms.',
+        projects: [
+            {
+                name: 'Sprig Game Editor',
+                desc: 'Learn to code by making games. Forked from hackclub/sprig - modified educational game platform',
+                links: [
+                    { text: '💻 VIEW CODE', url: 'https://github.com/CreativeDragon1/sprig', type: 'github' }
+                ]
+            },
+            {
+                name: 'Retro Web Game',
+                desc: 'Arcade-style web game with pixel art and engaging gameplay',
+                links: [
+                    { text: '💻 VIEW CODE', url: 'https://github.com/CreativeDragon1/Game', type: 'github' }
+                ]
+            }
+        ]
+    },
+    'leader': {
+        title: 'Leader & Organizer',
+        description: 'Organized and led multiple hackathons, clubs, and events with significant impact.',
+        content: `
+            <div class="stats-block">
+                <strong>▸ MAJOR HACKATHONS ORGANIZED:</strong><br>
+                <strong>Educathon Hackathon</strong> - $31,000+ in prizes, 450+ global participants<br>
+                <strong>Sandcodes Hackathon</strong> - $3,500+ in funds, 340+ participants<br>
+                <strong>Blueprint</strong> - GIIS Robotics Club hackathon with 79 participants<br>
+            </div>
+            <div class="stats-block">
+                <strong>▸ CLUB LEADERSHIP ROLES:</strong><br>
+                • <strong>Technology Head</strong> - Robotics Club, Robotics Stall<br>
+                • <strong>Secretary</strong> - GIIS Chess Club<br>
+                • <strong>Head of Design & Marketing</strong> - GIIS Pulse Club<br>
+                • <strong>Head of Sound & Lighting + MARCOM</strong> - Drama Night<br>
+            </div>
+            <p class="role-description">Passionate about creating opportunities, fostering innovation, and building engaged communities.</p>
+        `
+    },
+    'entrepreneur': {
+        title: 'Entrepreneur',
+        description: 'Co-founder of startup focused on drone flight controller technology.',
+        projects: [
+            {
+                name: 'The QU4DCOACH',
+                desc: 'Startup co-founded to develop and sell drone flight controllers. Served as Chief Technical Officer. Led R&D of Jatayu V1.0 flight controller and maintained company website.',
+                links: [
+                    { text: '🌐 VISIT WEBSITE', url: 'https://thequadcoach.xyz', type: 'external' },
+                    { text: '📖 LEARN MORE', url: 'https://thequadcoach.xyz', type: 'external' }
+                ]
+            }
+        ],
+        footer: 'Experienced in product development, R&D, website maintenance, and startup operations.'
+    },
+    'robotics': {
+        title: 'Robotics Enthusiast',
+        description: 'Building innovative robotic systems from autonomous vehicles to remote-controlled projects.',
+        content: `
+            <div class="stats-block">
+                <strong>▸ ROBOTICS PROJECTS:</strong><br>
+                <strong>Mechanum Wheel RC Car</strong> - PS4 Dualshock Controller controlled vehicle<br>
+                • Built from scratch with precise mechanics<br>
+                • Wireless PS4 controller integration<br>
+                <strong>Maze-Solving Vehicle</strong> - Autonomous robot that solves mazes automatically<br>
+                • AI-based pathfinding<br>
+                • Sensor integration & obstacle avoidance<br>
+            </div>
+            <div class="stats-block">
+                <strong>▸ ROBOTICS ROLES:</strong><br>
+                • Technology Head - Robotics Club & Robotics Stall<br>
+                • HackClub Construct - 72+ hours CAD for robotics projects<br>
+                • Drone Flight Controller Development (Jatayu V1.0)<br>
+            </div>
+        `,
+        footer: 'Combining mechanical engineering, electronics, and programming to bring robotic innovations to life.'
+    },
+    'cfd': {
+        title: 'CFD Analyst',
+        description: 'Exploring computational fluid dynamics for performance optimization.',
+        content: `
+            <div class="stats-block">
+                <strong>▸ CURRENT FOCUS:</strong><br>
+                Participating in <strong>STEM Racing</strong> - Formula racing competition<br>
+                Developing CFD analysis skills for aerodynamic optimization<br>
+                Applying computational simulations for vehicle performance<br>
+            </div>
+            <p class="role-description">CFD expertise coming soon as part of STEM Racing competition work. Stay tuned for exciting aerodynamic projects!</p>
+        `
+    }
+};
+
+// Initialize role selector
+document.addEventListener('DOMContentLoaded', () => {
+    const roleSelector = document.getElementById('roleSelector');
+    if (roleSelector) {
+        roleSelector.addEventListener('change', (e) => {
+            renderRoleContent(e.target.value);
+        });
+        // Load default role
+        renderRoleContent('fullstack');
+    }
+});
+
+function renderRoleContent(role) {
+    const contentDiv = document.getElementById('curatedContent');
+    const roleData = roleContent[role];
+    
+    if (!roleData || !contentDiv) return;
+    
+    let html = `
+        <div class="role-section">
+            <div class="role-title">▸ ${roleData.title.toUpperCase()}</div>
+            <p class="role-description">${roleData.description}</p>
+    `;
+    
+    if (roleData.content) {
+        html += roleData.content;
+    }
+    
+    if (roleData.projects && roleData.projects.length > 0) {
+        html += '<div class="role-projects">';
+        roleData.projects.forEach(project => {
+            html += `
+                <div class="project-card">
+                    <div class="project-card-title">★ ${project.name}</div>
+                    <div class="project-card-desc">${project.desc}</div>
+                    <div class="project-card-links">
+            `;
+            project.links.forEach(link => {
+                html += `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="project-link">${link.text}</a>`;
+            });
+            html += `
+                    </div>
+                </div>
+            `;
+        });
+        html += '</div>';
+    }
+    
+    if (roleData.footer) {
+        html += `<p class="role-description" style="margin-top: 15px; font-style: italic;">${roleData.footer}</p>`;
+    }
+    
+    html += '</div>';
+    contentDiv.innerHTML = html;
 }
 
 // ===== CONSOLE EASTER EGG =====

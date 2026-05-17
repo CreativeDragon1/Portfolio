@@ -75,15 +75,35 @@ function loadAwards() {
     } else {
         // Initialize with default awards if none exist
         awards = [
-            { id: 1, icon: "★★★", title: "GIIS 2K25", desc: "Overall Winner" },
-            { id: 2, icon: "[1ST]", title: "InnovateHacks 2.0", desc: "Top placement for innovative build" },
-            { id: 3, icon: "▲▲▲", title: "Learn 2 Build 2024", desc: "Winner – XYZ Domain & Interview Cake License" },
-            { id: 4, icon: "[2ND]", title: "CyberHacks", desc: "Second Place (Winner Track)" },
-            { id: 5, icon: "◆◆◆", title: "GIA Hacks 2", desc: "Winner track recognition" },
-            { id: 6, icon: "►►►", title: "CSPSC Hacks", desc: "Winner – Honorable Mention" },
-            { id: 7, icon: "[3RD]", title: "Lift Off", desc: "2nd Runner Up" },
-            { id: 8, icon: "★★★", title: "Valentine Hacks by EduLearn", desc: "Winner – First Place" },
-            { id: 9, icon: "■■■", title: "EduCathor", desc: "Winner – 1st" }
+            // Clubs & Organizations
+            { id: 1, icon: "►", title: "Technology Head", desc: "Robotics Club - Leadership position" },
+            { id: 2, icon: "►", title: "Secretary", desc: "GIIS Chess Club - Leadership position" },
+            { id: 3, icon: "►", title: "Head of Design and Marketing", desc: "GIIS Pulse Club - Leadership position" },
+            { id: 4, icon: "◆", title: "Design and Marketing", desc: "GIIS Sports Club" },
+            { id: 5, icon: "◆", title: "Technology Department", desc: "GIIS Tech Club" },
+            { id: 6, icon: "►", title: "Technology Head", desc: "Blueprint - Hackathon with 79 participants" },
+            { id: 7, icon: "►", title: "Technology Head", desc: "Robotics Stall - Mechanum wheel car project" },
+            { id: 8, icon: "►", title: "Head of Sound and Lighting & MARCOM", desc: "Drama Night - Leadership position" },
+            { id: 9, icon: "◆", title: "Event Photographer", desc: "Photography Club" },
+            // Hackathons Organized
+            { id: 10, icon: "[★]", title: "Organiser - Educathon Hackathon", desc: "$31,000 in prizes, 450+ global participants" },
+            { id: 11, icon: "[★]", title: "Organiser - Sandcodes", desc: "$3,500 in funds, 340+ participants" },
+            // Internships & Jobs
+            { id: 12, icon: "▲", title: "Chief Technical Officer", desc: "The QU4DCOACH - Startup, Jatayu V1.0 flight controller" },
+            // Certificates & Awards
+            { id: 13, icon: "★★★", title: "Winner", desc: "GIIS 2K25 Hackathon - Advanced" },
+            { id: 14, icon: "[1ST]", title: "First Place", desc: "Campfire Singapore - HackClub 48hr game jam" },
+            { id: 15, icon: "[3RD]", title: "3rd Place", desc: "Lift Off" },
+            { id: 16, icon: "[WIN]", title: "Swimmer OSINT CTF", desc: "Cybersecurity competition - Score: 216/688" },
+            { id: 17, icon: "[★]", title: "Winner", desc: "Participated in 78 online hackathons, won 10" },
+            // Academics
+            { id: 18, icon: "▼", title: "Participation", desc: "CSMC Canadian Math Exam" },
+            { id: 19, icon: "▼", title: "Aerospace Engineering Course", desc: "IIT Madras online course" },
+            // Volunteering
+            { id: 20, icon: "◄", title: "Volunteer", desc: "Medcon" },
+            { id: 21, icon: "◄", title: "Photographer", desc: "Conference" },
+            { id: 22, icon: "◄", title: "Photographer", desc: "TOK Fest" },
+            { id: 23, icon: "◄", title: "Cleaner", desc: "Beach Clean Up @ Pasir Ris" }
         ];
         saveAwards();
     }
