@@ -8,29 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Login Screen -->
-    <div id="loginScreen" class="admin-login-screen">
-        <div class="admin-login-container">
-            <div class="admin-logo">
-                <span class="blinking">▶</span> ADMIN.EXE
-            </div>
-            <div class="admin-login-box">
-                <div class="login-title">SYSTEM ACCESS</div>
-                <div class="terminal-prompt">
-                    <span class="prompt-symbol">PASSWORD></span>
-                    <input type="password" id="adminPassword" class="admin-input" placeholder="Enter password...">
-                </div>
-                <div class="login-error" id="loginError"></div>
-                <button class="admin-btn admin-btn-primary" id="loginBtn">
-                    <span class="pixel-emoji">🔑</span> ACCESS SYSTEM
-                </button>
-                <div class="login-hint">Hint: Default password is "Raahi%123"</div>
-            </div>
-        </div>
-    </div>
-
     <!-- Admin Dashboard -->
-    <div id="adminDashboard" class="admin-dashboard hidden">
+    <div id="adminDashboard" class="admin-dashboard">
         <!-- Header -->
         <header class="retro-header">
             <div class="header-content">
@@ -41,10 +20,6 @@
                     <span class="stat-item">MODE: <span class="stat-value blinking-slow">ADMIN</span></span>
                     <span class="stat-divider">|</span>
                     <span class="stat-item">SYS_TIME: <span class="stat-value" id="adminTime">00:00:00</span></span>
-                    <span class="stat-divider">|</span>
-                    <button class="admin-logout-btn" id="logoutBtn">
-                        <span class="pixel-emoji">🚪</span> LOGOUT
-                    </button>
                 </div>
             </div>
         </header>

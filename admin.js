@@ -1,50 +1,7 @@
-// ===== ADMIN AUTHENTICATION =====
-const ADMIN_PASSWORD = "Raahi%123"; // Change this to your secure password
-let isAuthenticated = false;
-
 // Check if already logged in
 window.addEventListener('load', () => {
-    const savedAuth = sessionStorage.getItem('adminAuth');
-    if (savedAuth === 'true') {
-        showDashboard();
-    }
-    initAdminClock();
-});
-
-// Login functionality
-document.getElementById('loginBtn').addEventListener('click', login);
-document.getElementById('adminPassword').addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') login();
-});
-
-function login() {
-    const password = document.getElementById('adminPassword').value;
-    const errorDiv = document.getElementById('loginError');
-    
-    if (password === ADMIN_PASSWORD) {
-        sessionStorage.setItem('adminAuth', 'true');
-        isAuthenticated = true;
-        errorDiv.textContent = '';
-        showDashboard();
-    } else {
-        errorDiv.textContent = '✕ ACCESS DENIED - INVALID PASSWORD';
-        document.getElementById('adminPassword').value = '';
-    }
-}
-
-function showDashboard() {
-    document.getElementById('loginScreen').classList.add('hidden');
-    document.getElementById('adminDashboard').classList.remove('hidden');
     loadAwards();
-}
-
-// Logout functionality
-document.getElementById('logoutBtn').addEventListener('click', () => {
-    sessionStorage.removeItem('adminAuth');
-    isAuthenticated = false;
-    document.getElementById('adminDashboard').classList.add('hidden');
-    document.getElementById('loginScreen').classList.remove('hidden');
-    document.getElementById('adminPassword').value = '';
+    initAdminClock();
 });
 
 // ===== ADMIN CLOCK =====
