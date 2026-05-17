@@ -650,6 +650,23 @@ const roleContent = {
             <p class="role-description">Passionate about creating opportunities, fostering innovation, and building engaged communities.</p>
         `
     },
+    'event-organizer': {
+        title: 'Event Organizer & AV Tech',
+        description: 'Experienced in handling technical production, specifically sound and AV setups for large-scale events.',
+        content: `
+            <div class="stats-block">
+                <strong>▸ EVENT EXPERIENCE:</strong><br>
+                <strong>Drama Night</strong> - AV Team (Head of Sound)<br>
+                • Managed sound design and live audio mixing<br>
+                • Ensured seamless audio experience for the entire production<br>
+                <br>
+                <strong>IBDP 2026 Graduation</strong> - AV Team (Sound Lead)<br>
+                • In charge of sound production and technical setup<br>
+                • Coordinating audio infrastructure for the graduating cohort<br>
+            </div>
+            <p class="role-description">Ensuring seamless technical execution and high-quality audio experiences for major school events.</p>
+        `
+    },
     'entrepreneur': {
         title: 'Entrepreneur',
         description: 'Co-founder of startup focused on drone flight controller technology.',
